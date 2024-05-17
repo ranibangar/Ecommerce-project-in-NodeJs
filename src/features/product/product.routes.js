@@ -15,7 +15,7 @@ const productController = new ProductController();
 
 // localhost:4100/api/products/filter?minPrice=10&maxPrice=20&category=Category1
 productRouter.post(
-  '/rate',
+  '/rateproduct',
   (req, res, next)=>{
     productController.rateProduct(req, res, next)
 } 
@@ -27,13 +27,13 @@ productRouter.get(
 } 
 );
 productRouter.get(
-  '/',
+  '/getallproducts',
   (req, res)=>{
     productController.getAllProducts(req, res)
 } 
 );
 productRouter.post(
-  '/',
+  '/addproduct',
   upload.single('imageUrl'),
   (req, res)=>{
     productController.addProduct(req, res)
@@ -45,7 +45,7 @@ productRouter.get("/averagePrice", (req, res, next)=>{
 });
 
 productRouter.get(
-  '/:id',
+  '/getproductbyid/:id',
   (req, res)=>{
     productController.getOneProduct(req, res)
 } );

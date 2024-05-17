@@ -1,0 +1,82 @@
+1.group operator: 
+    The group operator seperates documents into groups according to a "group key
+     The output is one document for each unique group key.
+
+2.Comparision operator:
+   1.$gte-(greater than equal to)
+   2.$gte-(lesser than equal to)
+   3.$gt-(greater than)
+   4.$gt-(lesser than)
+
+3.Logical Operator:
+  1.$and
+  2.$or
+  3.$nor
+  4.$in(find doc in between two values)
+
+4.$avg(aggregation):
+      Returns the average value of the numeric values.
+
+5.Aggregation pipeline:
+   An aggregation pipeline can return results for groups of documents. For example, return the total, average, maximum, and minimum values.
+
+6.$Unwind:  it deconstruct the array 
+      Ex.sizes[S,M,XL]
+      $unwind:"$sizes",=then it gives different doc for each size
+
+7.project opeartor:
+   contain the attributes which we want in response.
+   ex.project:{name:1,rating-1} 
+   1 means inclusive -1 means exclusive
+
+8.cond:(condition)
+   to write if-else condition in mngoDB
+
+ Ex-  db.products.aggregates([
+    {
+      $project:{name:1,countOfRatings:{
+        $cond:{$if:{$isArray:"$ratings"},
+        then:{$size:"$ratings"},else:0 }}}
+    }
+   ])
+
+9.$sort:
+    sort the collectin by specified attribute
+
+    $sort:{countOfRatings:-1}
+    -1 meand in descending order
+
+10.$limit
+   limit to just 1 item in result
+   {$limit:1}
+ 11.match:
+     filter the doc to pass only the doc that match the specified condition to the next pipeline stage
+
+12.$join:
+join two more collection together
+
+13.$lookup:
+       this adds a new array field to each input doc.
+14.startTransaction:
+     its a collection of database operation where either all perations execued or none of the operatins are executed
+15.replica:
+     a replica set in mongoDB is a group of mongod processes that maintain the same data set.
+
+16.mongoose:
+    elegant mongoDB object modeling for node.js(ODM Tool)
+This is a library which simplify the databse interaction with application.
+features:
+1.ODM(bject data modelling)
+2.Better Structure
+3.Validation
+4.More controls using middlewares
+5.Rich API
+
+17.schemas:
+   it is nothing but blueprint of database collection
+   schema types- string ,number,date,buffer.boolean,mixed,bjectId,Array,decimal128,map,UUID
+
+18.Relationship in mongoose:
+1.one-one
+2.one-many
+3.many-many
